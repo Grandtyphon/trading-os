@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Maskable icon: full-bleed background, content inside the ~80% safe zone (no border ring, survives circular/squircle masks) -->
+  <rect width="64" height="64" fill="#0d1117"/>
+  <path d="M16 38 L24 30 L30 34 L38 24 L46 29" stroke="#e8b65a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="46" cy="29" r="3" fill="#34d399"/>
+  <circle cx="16" cy="38" r="2.4" fill="#e8b65a"/>
+  <path d="M17 45 L47 45" stroke="#3a4452" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

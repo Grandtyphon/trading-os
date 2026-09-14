@@ -1,0 +1,753 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Rokh', var(--font-geist-mono), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-gain: var(--gain);
+  --color-loss: var(--loss);
+  --color-gain-foreground: var(--gain-foreground);
+  --color-loss-foreground: var(--loss-foreground);
+  --color-gold: var(--gold);
+  --color-neon: var(--accent-color, var(--gold));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ===== LIGHT THEME (rarely used) ===== */
+:root {
+  --radius: 0.875rem;
+  --background: oklch(0.98 0.004 120);
+  --foreground: oklch(0.18 0.01 200);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 200);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 200);
+  --primary: oklch(0.78 0.14 75);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.96 0.005 120);
+  --secondary-foreground: oklch(0.25 0.01 200);
+  --muted: oklch(0.96 0.005 120);
+  --muted-foreground: oklch(0.5 0.01 200);
+  --accent: oklch(0.94 0.02 70);
+  --accent-foreground: oklch(0.3 0.05 70);
+  --destructive: oklch(0.58 0.22 25);
+  --border: oklch(0.9 0.005 120);
+  --input: oklch(0.92 0.005 120);
+  --ring: oklch(0.78 0.14 75);
+  --gain: oklch(0.62 0.17 152);
+  --loss: oklch(0.6 0.21 22);
+  --gain-foreground: oklch(0.99 0 0);
+  --loss-foreground: oklch(0.99 0 0);
+  --gold: oklch(0.74 0.15 75);
+  --chart-1: oklch(0.62 0.17 152);
+  --chart-2: oklch(0.6 0.21 22);
+  --chart-3: oklch(0.74 0.15 75);
+  --chart-4: oklch(0.6 0.12 200);
+  --chart-5: oklch(0.65 0.18 300);
+  --sidebar: oklch(0.97 0.004 120);
+  --sidebar-foreground: oklch(0.18 0.01 200);
+  --sidebar-primary: oklch(0.78 0.14 75);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.94 0.02 70);
+  --sidebar-accent-foreground: oklch(0.3 0.05 70);
+  --sidebar-border: oklch(0.9 0.005 120);
+  --sidebar-ring: oklch(0.78 0.14 75);
+  --accent-rgb: "232, 182, 90";
+}
+
+/* ===== DARK THEME — Deep space with neon accents ===== */
+.dark {
+  /* Deep dark background with subtle blue tint */
+  --background: oklch(0.13 0.015 250);
+  --foreground: oklch(0.96 0.005 120);
+  /* Glass card — semi-transparent for liquid glass effect */
+  --card: oklch(0.18 0.018 250 / 0.75);
+  --card-foreground: oklch(0.96 0.005 120);
+  --popover: oklch(0.16 0.02 250 / 0.92);
+  --popover-foreground: oklch(0.96 0.005 120);
+  /* Primary = neon accent (overridden by theme preset) */
+  --primary: oklch(0.78 0.14 75);
+  --primary-foreground: oklch(0.12 0.02 75);
+  --secondary: oklch(0.24 0.018 250 / 0.6);
+  --secondary-foreground: oklch(0.96 0.005 120);
+  --muted: oklch(0.22 0.015 250 / 0.5);
+  --muted-foreground: oklch(0.72 0.012 250);
+  --accent: oklch(0.28 0.025 75 / 0.8);
+  --accent-foreground: oklch(0.92 0.04 75);
+  --destructive: oklch(0.62 0.2 22);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.78 0.14 75);
+  --gain: oklch(0.68 0.16 152);
+  --loss: oklch(0.66 0.2 22);
+  --gain-foreground: oklch(0.16 0.02 152);
+  --loss-foreground: oklch(0.16 0.02 22);
+  --gold: oklch(0.8 0.14 75);
+  --chart-1: oklch(0.68 0.16 152);
+  --chart-2: oklch(0.66 0.2 22);
+  --chart-3: oklch(0.8 0.14 75);
+  --chart-4: oklch(0.62 0.14 200);
+  --chart-5: oklch(0.68 0.18 300);
+  --sidebar: oklch(0.15 0.015 250 / 0.8);
+  --sidebar-foreground: oklch(0.96 0.005 120);
+  --sidebar-primary: oklch(0.78 0.14 75);
+  --sidebar-primary-foreground: oklch(0.12 0.02 75);
+  --sidebar-accent: oklch(0.27 0.02 75 / 0.8);
+  --sidebar-accent-foreground: oklch(0.92 0.04 75);
+  --sidebar-border: oklch(1 0 0 / 6%);
+  --sidebar-ring: oklch(0.78 0.14 75);
+}
+
+/* ===== ATMOSPHERE TEMPLATES =====
+   Full-look theme templates: background + surface colors + ambient aurora
+   palette. Applied via [data-atmo] on <html> (providers.tsx, from the store).
+   Blocks live AFTER .dark so they override both the :root light defaults and
+   the .dark defaults — every template is a complete, mode-specific surface
+   set. Accent colors (--gold/--primary/--ring/…) stay driven by the neon
+   accent presets (applied as inline styles, which beat these rules). */
+
+/* Default aurora palette (midnight vibes) — keeps a rich ambient wash even
+   before/without a data-atmo value. */
+:root,
+.dark {
+  --aurora-1: oklch(0.55 0.18 300 / 0.16);
+  --aurora-2: oklch(0.55 0.15 200 / 0.12);
+  --aurora-3: oklch(0.6 0.15 152 / 0.08);
+}
+
+/* نیمه‌شب — Midnight: the classic deep-space look. Deliberately empty:
+   it IS the app default (:root + .dark values), so nothing to override. */
+[data-atmo="midnight"] {
+  --aurora-1: oklch(0.55 0.18 300 / 0.16);
+  --aurora-2: oklch(0.55 0.15 200 / 0.12);
+  --aurora-3: oklch(0.6 0.15 152 / 0.08);
+}
+
+/* سحابی — Nebula: deep violet galaxy */
+[data-atmo="nebula"] {
+  --background: oklch(0.14 0.035 300);
+  --card: oklch(0.19 0.04 300 / 0.75);
+  --popover: oklch(0.17 0.045 300 / 0.92);
+  --secondary: oklch(0.25 0.04 300 / 0.6);
+  --muted: oklch(0.23 0.035 300 / 0.5);
+  --sidebar: oklch(0.16 0.04 300 / 0.8);
+  --aurora-1: oklch(0.55 0.22 300 / 0.2);
+  --aurora-2: oklch(0.55 0.18 330 / 0.14);
+  --aurora-3: oklch(0.5 0.15 260 / 0.1);
+}
+
+/* اقیانوس — Ocean: deep teal waters */
+[data-atmo="ocean"] {
+  --background: oklch(0.13 0.03 210);
+  --card: oklch(0.18 0.035 210 / 0.75);
+  --popover: oklch(0.16 0.035 210 / 0.92);
+  --secondary: oklch(0.24 0.035 210 / 0.6);
+  --muted: oklch(0.22 0.03 210 / 0.5);
+  --sidebar: oklch(0.15 0.03 210 / 0.8);
+  --aurora-1: oklch(0.6 0.15 200 / 0.18);
+  --aurora-2: oklch(0.55 0.13 180 / 0.14);
+  --aurora-3: oklch(0.5 0.12 155 / 0.1);
+}
+
+/* اخگر — Ember: warm dark, glowing coals */
+[data-atmo="ember"] {
+  --background: oklch(0.14 0.03 30);
+  --card: oklch(0.19 0.035 30 / 0.75);
+  --popover: oklch(0.17 0.04 30 / 0.92);
+  --secondary: oklch(0.25 0.035 30 / 0.6);
+  --muted: oklch(0.23 0.03 30 / 0.5);
+  --sidebar: oklch(0.16 0.035 30 / 0.8);
+  --aurora-1: oklch(0.6 0.19 40 / 0.18);
+  --aurora-2: oklch(0.55 0.2 20 / 0.14);
+  --aurora-3: oklch(0.6 0.15 75 / 0.1);
+}
+
+/* جنگل شب — Night Forest: deep green woodland */
+[data-atmo="forest"] {
+  --background: oklch(0.13 0.03 155);
+  --card: oklch(0.18 0.035 155 / 0.75);
+  --popover: oklch(0.16 0.035 155 / 0.92);
+  --secondary: oklch(0.24 0.035 155 / 0.6);
+  --muted: oklch(0.22 0.03 155 / 0.5);
+  --sidebar: oklch(0.15 0.03 155 / 0.8);
+  --aurora-1: oklch(0.6 0.18 150 / 0.18);
+  --aurora-2: oklch(0.55 0.16 165 / 0.14);
+  --aurora-3: oklch(0.6 0.15 120 / 0.1);
+}
+
+/* طلوع — Dawn: warm light, sunrise gold */
+[data-atmo="dawn"] {
+  --background: oklch(0.975 0.02 85);
+  --foreground: oklch(0.2 0.02 80);
+  --card: oklch(1 0.008 85);
+  --card-foreground: oklch(0.2 0.02 80);
+  --popover: oklch(0.995 0.006 85);
+  --popover-foreground: oklch(0.2 0.02 80);
+  --secondary: oklch(0.95 0.018 85);
+  --secondary-foreground: oklch(0.28 0.025 80);
+  --muted: oklch(0.95 0.015 85);
+  --muted-foreground: oklch(0.5 0.02 80);
+  --border: oklch(0.9 0.025 85);
+  --input: oklch(0.92 0.02 85);
+  --sidebar: oklch(0.97 0.02 85 / 0.85);
+  --aurora-1: oklch(0.85 0.1 80 / 0.35);
+  --aurora-2: oklch(0.85 0.08 30 / 0.3);
+  --aurora-3: oklch(0.9 0.06 100 / 0.25);
+}
+
+/* مه صبحگاهی — Morning Mist: cool light */
+[data-atmo="mist"] {
+  --background: oklch(0.975 0.006 200);
+  --foreground: oklch(0.19 0.01 200);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.19 0.01 200);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.19 0.01 200);
+  --secondary: oklch(0.95 0.006 200);
+  --secondary-foreground: oklch(0.26 0.012 200);
+  --muted: oklch(0.95 0.006 200);
+  --muted-foreground: oklch(0.5 0.012 200);
+  --border: oklch(0.9 0.008 200);
+  --input: oklch(0.92 0.006 200);
+  --sidebar: oklch(0.97 0.008 200 / 0.85);
+  --aurora-1: oklch(0.85 0.06 200 / 0.3);
+  --aurora-2: oklch(0.88 0.05 220 / 0.25);
+  --aurora-3: oklch(0.9 0.04 180 / 0.22);
+}
+
+/* شکوفه — Blossom: soft rose light */
+[data-atmo="blush"] {
+  --background: oklch(0.975 0.02 15);
+  --foreground: oklch(0.22 0.02 15);
+  --card: oklch(1 0.01 15);
+  --card-foreground: oklch(0.22 0.02 15);
+  --popover: oklch(0.995 0.008 15);
+  --popover-foreground: oklch(0.22 0.02 15);
+  --secondary: oklch(0.95 0.02 15);
+  --secondary-foreground: oklch(0.3 0.025 15);
+  --muted: oklch(0.95 0.018 15);
+  --muted-foreground: oklch(0.52 0.02 15);
+  --border: oklch(0.9 0.025 15);
+  --input: oklch(0.92 0.02 15);
+  --sidebar: oklch(0.97 0.02 15 / 0.85);
+  --aurora-1: oklch(0.85 0.09 15 / 0.32);
+  --aurora-2: oklch(0.87 0.08 40 / 0.26);
+  --aurora-3: oklch(0.88 0.06 350 / 0.22);
+}
+
+@layer base {
+  /* ===== ROKH FONT FAMILY (12 weights) — must be in @layer base to survive Tailwind v4 ===== */
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-HairLine.woff2') format('woff2'); font-weight: 100; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-Thin.woff2') format('woff2'); font-weight: 200; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-ExtraLight.woff2') format('woff2'); font-weight: 250; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-Normal.woff2') format('woff2'); font-weight: 350; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-ExtraBold.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-UltraBold.woff2') format('woff2'); font-weight: 850; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Rokh'; src: url('/fonts/Rokh-Black.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv01";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Numbers, prices, R always LTR even inside RTL Persian text */
+  .num, [data-ltr] {
+    direction: ltr;
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}
+
+/* ===== LIQUID GLASS DESIGN SYSTEM ===== */
+/* Only active when .glass-enabled is on <html> */
+
+.glass-enabled .glass {
+  background: color-mix(in oklab, var(--card) 60%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid color-mix(in oklab, var(--accent-color, var(--gold)) 12%, transparent);
+  box-shadow:
+    0 8px 32px -8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 0 color-mix(in oklab, var(--accent-color, var(--gold)) 8%, transparent);
+}
+
+.glass-enabled .glass-strong {
+  background: color-mix(in oklab, var(--card) 80%, transparent);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid color-mix(in oklab, var(--accent-color, var(--gold)) 15%, transparent);
+  box-shadow:
+    0 12px 40px -8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 color-mix(in oklab, var(--accent-color, var(--gold)) 10%, transparent);
+}
+
+/* Neon glow effect */
+.neon-glow {
+  box-shadow:
+    0 0 8px color-mix(in oklab, var(--accent-color, var(--gold)) 30%, transparent),
+    0 0 24px color-mix(in oklab, var(--accent-color, var(--gold)) 15%, transparent);
+}
+
+.neon-glow-strong {
+  box-shadow:
+    0 0 12px color-mix(in oklab, var(--accent-color, var(--gold)) 50%, transparent),
+    0 0 36px color-mix(in oklab, var(--accent-color, var(--gold)) 25%, transparent),
+    0 0 60px color-mix(in oklab, var(--accent-color, var(--gold)) 10%, transparent);
+}
+
+.neon-text {
+  text-shadow:
+    0 0 8px color-mix(in oklab, var(--accent-color, var(--gold)) 40%, transparent),
+    0 0 20px color-mix(in oklab, var(--accent-color, var(--gold)) 20%, transparent);
+}
+
+/* Neon border */
+.neon-border {
+  border: 1px solid color-mix(in oklab, var(--accent-color, var(--gold)) 40%, transparent);
+  box-shadow:
+    0 0 8px color-mix(in oklab, var(--accent-color, var(--gold)) 25%, transparent),
+    inset 0 0 8px color-mix(in oklab, var(--accent-color, var(--gold)) 10%, transparent);
+}
+
+/* Gradient text */
+.text-gradient-neon {
+  background: linear-gradient(135deg, var(--accent-color, var(--gold)), var(--accent-color-2, var(--gold)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glass card with neon edge */
+.glass-neon {
+  background: color-mix(in oklab, var(--card) 65%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid color-mix(in oklab, var(--accent-color, var(--gold)) 20%, transparent);
+  box-shadow:
+    0 8px 32px -8px rgba(0, 0, 0, 0.5),
+    0 0 16px -4px color-mix(in oklab, var(--accent-color, var(--gold)) 20%, transparent),
+    inset 0 1px 0 0 color-mix(in oklab, var(--accent-color, var(--gold)) 12%, transparent);
+}
+
+/* ===== AMBIENT AURORA BACKGROUND =====
+   A living, breathing background: three huge soft gradient blobs drifting
+   very slowly (GPU-composited transforms only), tinted by the active
+   atmosphere template + a film-grain overlay for texture. Sits behind all
+   content (fixed, -z-10) — glass surfaces blur it as they pass over. */
+.aurora-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  will-change: transform;
+}
+.aurora-blob-1 {
+  top: -20%;
+  right: -12%;
+  width: 58vw;
+  height: 58vw;
+  background: radial-gradient(circle at center, var(--aurora-1, transparent) 0%, transparent 68%);
+  animation: aurora-drift-1 46s ease-in-out infinite alternate;
+}
+.aurora-blob-2 {
+  bottom: -18%;
+  left: -14%;
+  width: 52vw;
+  height: 52vw;
+  background: radial-gradient(circle at center, var(--aurora-2, transparent) 0%, transparent 68%);
+  animation: aurora-drift-2 58s ease-in-out infinite alternate;
+}
+.aurora-blob-3 {
+  top: 28%;
+  left: 28%;
+  width: 46vw;
+  height: 46vw;
+  background: radial-gradient(circle at center, var(--aurora-3, transparent) 0%, transparent 68%);
+  animation: aurora-drift-3 70s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift-1 {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-7vw, 4vh, 0) scale(1.18); }
+}
+@keyframes aurora-drift-2 {
+  from { transform: translate3d(0, 0, 0) scale(1.1); }
+  to { transform: translate3d(6vw, -5vh, 0) scale(0.94); }
+}
+@keyframes aurora-drift-3 {
+  from { transform: translate3d(0, 0, 0) scale(0.95); }
+  to { transform: translate3d(-4vw, -7vh, 0) scale(1.22); }
+}
+/* Subtle film grain for a premium textured finish */
+.aurora-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+/* Custom scrollbar */
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--accent-color, var(--gold)) 30%, transparent) transparent;
+}
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background-color: color-mix(in oklab, var(--accent-color, var(--gold)) 35%, transparent);
+  border-radius: 9999px;
+}
+.scroll-thin::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in oklab, var(--accent-color, var(--gold)) 55%, transparent);
+}
+
+/* grid bg */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--accent-color, var(--gold)) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--accent-color, var(--gold)) 5%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* RTL: mirror directional icons only */
+[dir="rtl"] .mirror-rtl {
+  transform: scaleX(-1);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes soft-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.animate-soft-pulse {
+  animation: soft-pulse 2s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.35s ease-out both;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--muted) 60%, transparent) 0%,
+    color-mix(in oklab, var(--muted) 90%, transparent) 50%,
+    color-mix(in oklab, var(--muted) 60%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+@keyframes stagger-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.stagger-item {
+  animation: stagger-in 0.3s ease-out both;
+}
+
+.card-lift {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out both;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slide-up 0.3s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--gain) 50%, transparent); }
+  50% { box-shadow: 0 0 0 6px transparent; }
+}
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.count-up {
+  animation: count-up 0.4s ease-out both;
+}
+
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+.neon-flicker {
+  animation: neon-flicker 3s ease-in-out infinite;
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* ===== SECTION ENTRANCE =====
+   Glassy section-switch entrance — blur + rise + micro-scale.
+   Keyed remount in app-shell re-triggers it on every section change. */
+@keyframes section-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.995);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+.animate-section-in {
+  animation: section-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform, filter;
+}
+
+/* ===== MILESTONE CELEBRATION =====
+   Short victory bounce + gold ring burst on the practice streak Flame icon
+   when a milestone is newly reached (pairs with the celebration toast). */
+@keyframes milestone-celebrate {
+  0% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--gold) 45%, transparent);
+  }
+  20% {
+    transform: scale(1.3) rotate(-10deg);
+  }
+  40% {
+    transform: scale(0.92) rotate(7deg);
+  }
+  60% {
+    transform: scale(1.18) rotate(-4deg);
+    box-shadow: 0 0 0 10px color-mix(in oklab, var(--gold) 0%, transparent);
+  }
+  80% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+.animate-milestone {
+  animation: milestone-celebrate 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ===== CHECK-IN POP =====
+   Instant tap-to-complete feedback on habit cards: the round button springs
+   in with an expanding color ring, like ticking a checkbox in Streaks/HabitKit. */
+@keyframes check-pop {
+  0% {
+    transform: scale(0.6);
+    box-shadow: 0 0 0 0 color-mix(in oklab, currentColor 55%, transparent);
+  }
+  55% {
+    transform: scale(1.22);
+    box-shadow: 0 0 0 9px color-mix(in oklab, currentColor 0%, transparent);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.animate-check-pop {
+  animation: check-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ===== REDUCED MOTION (a11y) =====
+   Respect the OS-level "reduce motion" preference: collapse every
+   animation/transition to a no-op and stop infinite ambient loops. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .pulse-glow,
+  .neon-flicker,
+  .animate-soft-pulse,
+  .shimmer,
+  .animate-fade-up,
+  .animate-section-in,
+  .animate-milestone,
+  .animate-check-pop,
+  .aurora-blob {
+    animation: none !important;
+    filter: none !important;
+  }
+}
+
+/* ===== TYPOGRAPHY UTILITIES ===== */
+.text-display {
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.text-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.text-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.divider-gradient {
+  height: 1px;
+  background: linear-gradient(
+    to left,
+    transparent,
+    color-mix(in oklab, var(--accent-color, var(--gold)) 30%, transparent),
+    transparent
+  );
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .dark body, body.dark {
+    background: white !important;
+    color: black !important;
+  }
+  header, nav, aside, .print\:hidden {
+    display: none !important;
+  }
+  .aurora-layer {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .print\:border-0 {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+  .print\:text-black {
+    color: black !important;
+    -webkit-text-fill-color: black !important;
+  }
+  .print\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
